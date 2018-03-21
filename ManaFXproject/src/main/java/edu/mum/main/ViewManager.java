@@ -18,8 +18,8 @@ public class ViewManager {
  		SpringFXMLLoader loader = new SpringFXMLLoader(context);
 		Parent root = (Parent) loader.load(fxml);
  	   
-	   stage.setTitle("Mana Welcome");
-	   stage.setScene(new Scene(root, 700, 700));
+	   stage.setTitle("Mana project");
+	   stage.setScene(new Scene(root, width, height));
 	   
 	   stage.show();
 

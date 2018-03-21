@@ -21,8 +21,8 @@ public class FXMain extends Application {
     	groups.addGroups();
     	// Start up Welcome/Login view
     	ViewManager viewManager = new ViewManager();   	
-    	int width = 100;
-    	int height = 200;
+    	int width = 400;
+    	int height = 300;
     	viewManager.displayView(getClass().getResource("/view/login.fxml"), stage, context, width, height);
     	} 
 }

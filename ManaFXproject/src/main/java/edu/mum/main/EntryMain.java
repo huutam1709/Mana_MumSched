@@ -12,11 +12,34 @@ import edu.mum.domain.Entry;
 import edu.mum.domain.Schedule;
 import edu.mum.service.EntryService;
 import edu.mum.service.ScheduleService;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+
+import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 @Component
 public class EntryMain {
@@ -36,6 +59,8 @@ public class EntryMain {
 	@FXML protected TableColumn<BlockSimple, String> month;
 	@FXML protected TableColumn<BlockSimple, String> courseName;
 	
+	@FXML protected ComboBox cmbStatus;
+	
 	 
 	@Autowired
 	EntryService entryService;
@@ -44,12 +69,32 @@ public class EntryMain {
 	ScheduleService scheduleService;
 
 	
+	@SuppressWarnings("unchecked")
 	@FXML public void initialize() {
+		
+		cmbStatus.valueProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				// TODO Auto-generated method stub
+//				System.out.println(arg0);
+//	            System.out.println(arg1);
+//	            System.out.println(arg2);
+				
+			}
+			
+		});
+		
+//		cmbStatus.setOnAction(e->{
+//			System.out.println("asdfsad");
+//		});
+		
 		loadEntries();
 		tblEntries.setOnMouseClicked(e -> {
 			if( e.getClickCount() == 1 ) {
 				System.out.println("1 times");
 			}});
+		
+		
 	}
 	
 	private void loadEntries() {
@@ -82,4 +127,8 @@ public class EntryMain {
 		tblBlocks.getItems().setAll(ls);
 		
 	}
+	
+//	@FXML public void action1() {
+//		System.out.println("action1");
+//	}
 }

@@ -90,7 +90,7 @@ public class LoginController {
             Stage stage=(Stage) username.getScene().getWindow();
             ViewManager viewManager = new ViewManager();
         	//viewManager.displayView(getClass().getResource("/view/user.fxml"), stage, context);
-            viewManager.displayView(getClass().getResource("/view/schedule1.fxml"), stage, context, 200, 400);
+            viewManager.displayView(getClass().getResource("/view/schedule1.fxml"), stage, context, 770, 550);
             System.out.println("entry size: "+ entryService.findAll().size());
            
         } catch(AuthenticationException e) {

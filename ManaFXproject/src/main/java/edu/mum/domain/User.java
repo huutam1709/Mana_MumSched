@@ -68,8 +68,8 @@ import edu.mum.validation.groups.Details;
 /*	   @OneToMany(mappedBy = "seller")
 	    private Collection<Item> itemsForSale = new ArrayList<Item>();
 */
-	    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-	    private Set<Item> boughtItems = new HashSet<Item>();
+	   // @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	    //private Set<Item> boughtItems = new HashSet<Item>();
 
 
 	public Long getId() {
@@ -136,17 +136,17 @@ import edu.mum.validation.groups.Details;
 		this.addresses = addresses;
 	}
 
-	public Set<Item> getBoughtItems() {
-		return boughtItems;
-	}
-
-	public void setBoughtItems(Set<Item> boughtItems) {
-		this.boughtItems = boughtItems;
-	}
-	
-	public void addBoughtItem(Item boughtItem) {
-		this.boughtItems.add(boughtItem);
-	}
+//	public Set<Item> getBoughtItems() {
+//		return boughtItems;
+//	}
+//
+//	public void setBoughtItems(Set<Item> boughtItems) {
+//		this.boughtItems = boughtItems;
+//	}
+//	
+//	public void addBoughtItem(Item boughtItem) {
+//		this.boughtItems.add(boughtItem);
+//	}
 
 	public void addAddress(Address address) {
 		this.addresses.add(address);
