@@ -94,10 +94,10 @@ public class LoginController {
 //    	userLoginService.login(userLogin);
     	
         try {
-            Authentication request = new UsernamePasswordAuthenticationToken(userName, passWord);
-            Authentication result = authenticationManager.authenticate(request);
-            SecurityContextHolder.getContext().setAuthentication(result);
-            
+//            Authentication request = new UsernamePasswordAuthenticationToken(userName, passWord);
+//            Authentication result = authenticationManager.authenticate(request);
+//            SecurityContextHolder.getContext().setAuthentication(result);
+//            
             Stage stage=(Stage) username.getScene().getWindow();
             ViewManager viewManager = new ViewManager();
         	//viewManager.displayView(getClass().getResource("/view/user.fxml"), stage, context);
