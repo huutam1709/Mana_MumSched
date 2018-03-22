@@ -22,4 +22,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return scheduleRestService.findOne(id);
 	}
 
+	@Override
+	public void update(Schedule sc) {
+		// TODO Auto-generated method stub
+		scheduleRestService.update(sc);
+	}
+
 }

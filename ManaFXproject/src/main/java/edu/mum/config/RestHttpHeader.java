@@ -4,10 +4,13 @@ import java.nio.charset.Charset;
 import java.util.Collections;
 
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +19,8 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class RestHttpHeader {
 	protected RestTemplate restTemplate;
-
+	
+	
 	public RestHttpHeader() {
 		restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -27,6 +31,12 @@ public class RestHttpHeader {
 	}
 
 	public HttpHeaders getHttpHeaders() {
+		
+		//CsrfToken csrfToken = csrfTokenRepository.generateToken(null);
+        //HttpHeaders headers = basicAuthHeaders();
+
+        //headers.add(csrfToken.getHeaderName(), csrfToken.getToken());
+        //headers.add("Cookie", "XSRF-TOKEN=" + csrfToken.getToken());
 
 		String username = "admin@mum.edu";
 		String password = "1";

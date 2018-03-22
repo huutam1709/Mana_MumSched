@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import edu.mum.domain.BlockSimple;
 import edu.mum.domain.Entry;
 import edu.mum.domain.Schedule;
+import edu.mum.enums.ScheduleStatusEnum;
 import edu.mum.service.EntryService;
 import edu.mum.service.ScheduleService;
 import javafx.collections.FXCollections;
@@ -71,30 +72,24 @@ public class EntryMain {
 	
 	@SuppressWarnings("unchecked")
 	@FXML public void initialize() {
-		
 		cmbStatus.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
 				// TODO Auto-generated method stub
-//				System.out.println(arg0);
-//	            System.out.println(arg1);
-//	            System.out.println(arg2);
-				
+				Entry en = tblEntries.getSelectionModel().getSelectedItem();
+				ScheduleStatusEnum currentStatus = ScheduleStatusEnum.valueOf((String) cmbStatus.getValue());
+				Schedule sc = new Schedule();
+				sc.setId(en.getId());
+				sc.setStatus(currentStatus);
+				scheduleService.update(sc);
 			}
-			
 		});
 		
-//		cmbStatus.setOnAction(e->{
-//			System.out.println("asdfsad");
-//		});
-		
 		loadEntries();
-		tblEntries.setOnMouseClicked(e -> {
-			if( e.getClickCount() == 1 ) {
-				System.out.println("1 times");
-			}});
-		
-		
+//		tblEntries.setOnMouseClicked(e -> {
+//			if( e.getClickCount() == 1 ) {
+//				System.out.println("1 times");
+//			}});
 	}
 	
 	private void loadEntries() {
@@ -118,17 +113,23 @@ public class EntryMain {
 		
 		Entry en = tblEntries.getSelectionModel().getSelectedItem();
 		
-		System.out.println("view scheduler click");
+		//System.out.println("view scheduler click");
 		Schedule sc = scheduleService.findOne(en.getId());
 		System.out.println("id there: " + sc.getId());
-		
 		
 		List<BlockSimple> ls = sc.getBlockSimple();
 		tblBlocks.getItems().setAll(ls);
 		
+		setSelectedItemCombobox(sc.getStatus());
 	}
 	
-//	@FXML public void action1() {
-//		System.out.println("action1");
-//	}
+	private void setSelectedItemCombobox(ScheduleStatusEnum status) {
+		switch( status) {
+		case PENDING:cmbStatus.getSelectionModel().select(0); break;
+		case DRAFT:cmbStatus.getSelectionModel().select(1); break;
+		case APPROVED:cmbStatus.getSelectionModel().select(2); break;
+		}
+		
+	}
+	
 }
