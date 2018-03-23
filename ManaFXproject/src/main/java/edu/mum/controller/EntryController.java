@@ -8,6 +8,7 @@ import javax.naming.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -74,10 +75,17 @@ public class EntryController {
     
     @Autowired
     ScheduleService scheduleService;
+    
+    @Autowired
+    private ApplicationContext context;
 
 	
 	@SuppressWarnings("unchecked")
 	@FXML public void initialize() {
+		
+		//context = new ClassPathXmlApplicationContext("context/applicationContext.xml");
+		//SentryService = (EntryService)context.getBean("EntryServiceImpl");
+		
 		cmbStatus.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {

@@ -66,8 +66,8 @@ public class LoginController {
     @FXML
     PasswordField password;
     
-    @Autowired
-	EntryService entryService;
+    //@Autowired
+	//EntryService entryService;
     
     @Autowired
     UserLoginService userLoginService;
@@ -97,7 +97,7 @@ public class LoginController {
             Stage stage=(Stage) username.getScene().getWindow();
             ViewManager viewManager = new ViewManager();
             viewManager.displayView("schedule", stage, 770, 550);
-            System.out.println("entry size: "+ entryService.findAll().size());
+            //System.out.println("entry size: "+ entryService.findAll().size());
            
         } catch(AuthenticationException e) {
       	  text = "Authentication failed: " + e.getMessage() ;

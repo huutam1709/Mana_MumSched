@@ -50,8 +50,11 @@
       <property name="entityManagerFactory" ref="entityManagerFactory" />
    </bean>
    
+   <bean id = "EntryServiceImpl" class = "edu.mum.service.impl.EntryServiceImpl">
+   </bean>
+   
    <!-- Scan for  transaction-based resources -->
-   	<context:component-scan base-package="edu.mum" />
+   	<context:component-scan base-package="edu.mum.*" />
    	
    	<context:annotation-config />
   

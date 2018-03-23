@@ -13,7 +13,7 @@ import edu.mum.rest.service.EntryRestService;
 import edu.mum.service.EntryService;
 
 @Service
-@Component 
+@Transactional 
 public class EntryServiceImpl implements EntryService {
 
 	@Autowired

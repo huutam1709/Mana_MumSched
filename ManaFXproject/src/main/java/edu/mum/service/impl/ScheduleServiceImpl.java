@@ -12,7 +12,7 @@ import edu.mum.rest.service.ScheduleRestService;
 import edu.mum.service.ScheduleService;
 
 @Service
-@Component
+@Transactional
 public class ScheduleServiceImpl implements ScheduleService {
 
 	@Autowired
