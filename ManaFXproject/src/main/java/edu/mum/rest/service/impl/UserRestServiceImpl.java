@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 
 import edu.mum.config.RestHttpHeader;
 import edu.mum.domain.Schedule;
-import edu.mum.domain.UserCredentials;
 import edu.mum.domain.UserLogin;
 import edu.mum.rest.service.UserRestService;
 

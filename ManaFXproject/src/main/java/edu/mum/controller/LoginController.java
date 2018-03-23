@@ -60,12 +60,6 @@ import javafx.stage.Stage;
 @Scope("prototype")
 public class LoginController {
 
-	@Autowired
-	AuthenticationManager authenticationManager;
-	
-	@Autowired
-	ApplicationContext context;
-
 	@FXML private Text actiontarget;
     @FXML
     TextField username;
@@ -80,7 +74,6 @@ public class LoginController {
 
     
     @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-
     	
     	String text = "Authentication successful";
     	
@@ -100,8 +93,7 @@ public class LoginController {
 //            
             Stage stage=(Stage) username.getScene().getWindow();
             ViewManager viewManager = new ViewManager();
-        	//viewManager.displayView(getClass().getResource("/view/user.fxml"), stage, context);
-            viewManager.displayView(getClass().getResource("/view/schedule1.fxml"), stage, context, 770, 550);
+            viewManager.displayView("schedule", stage, 770, 550);
             System.out.println("entry size: "+ entryService.findAll().size());
            
         } catch(AuthenticationException e) {

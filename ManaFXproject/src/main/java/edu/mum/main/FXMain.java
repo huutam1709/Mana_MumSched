@@ -15,14 +15,9 @@ public class FXMain extends Application {
  
     @Override
     public void start(Stage stage) throws Exception {
-    
-    	ApplicationContext context = new ClassPathXmlApplicationContext("context/applicationContext.xml");
-    	Groups groups = (Groups) context.getBean("groups");
-    	groups.addGroups();
-    	// Start up Welcome/Login view
     	ViewManager viewManager = new ViewManager();   	
     	int width = 400;
     	int height = 300;
-    	viewManager.displayView(getClass().getResource("/view/login.fxml"), stage, context, width, height);
+    	viewManager.displayView("login", stage, width, height);
     	} 
 }

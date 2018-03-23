@@ -13,15 +13,9 @@ import javafx.stage.Stage;
 
 public class ViewManager {
 
-	public void displayView(URL fxml, Stage stage, 	ApplicationContext context, int width, int height) throws Exception  {
-
- 		SpringFXMLLoader loader = new SpringFXMLLoader(context);
-		Parent root = (Parent) loader.load(fxml);
- 	   
-	   stage.setTitle("Mana project");
-	   stage.setScene(new Scene(root, width, height));
-	   
-	   stage.show();
-
+	public void displayView(String fxml, Stage stage, int width, int height) throws Exception  {
+		Window mainStage = new Window(fxml, "Mana project", width, height );
+		stage.setScene(mainStage.getScene());
+	    stage.show();
 	}
 }
