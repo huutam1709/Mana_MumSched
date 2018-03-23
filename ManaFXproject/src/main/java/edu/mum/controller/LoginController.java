@@ -64,17 +64,6 @@ public class LoginController {
     @FXML
     PasswordField password;
     
-<<<<<<< HEAD
-    //@Autowired
-	//EntryService entryService;
-    
-    @Autowired
-    UserLoginService userLoginService;
-=======
-    @Autowired
-	EntryService entryService;
->>>>>>> parent of 5fdf923... update authentication
-
  
     
     @FXML protected void handleSubmitButtonAction(ActionEvent event) {
