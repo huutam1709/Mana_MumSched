@@ -1,49 +1,47 @@
-package edu.mum.main;
 
-
-import java.awt.event.MouseEvent;
+package edu.mum.controller;
+ 
 import java.util.List;
 
+import javax.naming.AuthenticationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import edu.mum.domain.BlockSimple;
 import edu.mum.domain.Entry;
 import edu.mum.domain.Schedule;
+import edu.mum.domain.UserLogin;
 import edu.mum.enums.ScheduleStatusEnum;
+import edu.mum.main.ViewManager;
+import edu.mum.rest.service.EntryRestService;
 import edu.mum.service.EntryService;
 import edu.mum.service.ScheduleService;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-
-import javafx.application.Application;
+import edu.mum.service.UserLoginService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-
+ 
 @Component
-public class EntryMain {
+@Scope("prototype")
+public class EntryController {
 	@FXML protected TableView<Entry> tblEntries;
 	@FXML protected TableColumn<Entry, String> id;
 	@FXML protected TableColumn<Entry, String> name;
@@ -63,15 +61,31 @@ public class EntryMain {
 	@FXML protected ComboBox cmbStatus;
 	
 	 
-	@Autowired
+	@FXML private Text actiontarget;
+    @FXML
+    TextField username;
+    @FXML
+    PasswordField password;
+    
+    @Autowired
 	EntryService entryService;
-	
-	@Autowired
-	ScheduleService scheduleService;
+    
+    @Autowired
+    UserLoginService userLoginService;
+    
+    @Autowired
+    ScheduleService scheduleService;
+    
+    @Autowired
+    private ApplicationContext context;
 
 	
 	@SuppressWarnings("unchecked")
 	@FXML public void initialize() {
+		
+		//context = new ClassPathXmlApplicationContext("context/applicationContext.xml");
+		//SentryService = (EntryService)context.getBean("EntryServiceImpl");
+		
 		cmbStatus.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
@@ -86,10 +100,7 @@ public class EntryMain {
 		});
 		
 		loadEntries();
-//		tblEntries.setOnMouseClicked(e -> {
-//			if( e.getClickCount() == 1 ) {
-//				System.out.println("1 times");
-//			}});
+
 	}
 	
 	private void loadEntries() {
@@ -104,7 +115,7 @@ public class EntryMain {
 		entryDate.setCellValueFactory(new PropertyValueFactory<Entry, String>("entryDate"));
 
 		List<Entry> ls = entryService.findAll();
-		tblEntries.getItems().setAll(ls);
+		//tblEntries.getItems().setAll(ls);
 	}
 	
 	@FXML protected void ViewSchedules(ActionEvent event) {
@@ -131,5 +142,4 @@ public class EntryMain {
 		}
 		
 	}
-	
 }

@@ -44,11 +44,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import edu.mum.domain.UserLogin;
 import edu.mum.main.ViewManager;
 import edu.mum.rest.service.EntryRestService;
 import edu.mum.service.EntryService;
-import edu.mum.service.UserLoginService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -60,49 +58,43 @@ import javafx.stage.Stage;
 @Scope("prototype")
 public class LoginController {
 
-	@Autowired
-	AuthenticationManager authenticationManager;
-	
-	@Autowired
-	ApplicationContext context;
-
 	@FXML private Text actiontarget;
     @FXML
     TextField username;
     @FXML
     PasswordField password;
     
-    @Autowired
-	EntryService entryService;
+<<<<<<< HEAD
+    //@Autowired
+	//EntryService entryService;
     
     @Autowired
     UserLoginService userLoginService;
+=======
+    @Autowired
+	EntryService entryService;
+>>>>>>> parent of 5fdf923... update authentication
 
+ 
     
     @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-
     	
     	String text = "Authentication successful";
     	
     	String userName = username.getText();
     	String passWord = password.getText();
     	
-//    	UserLogin userLogin = new UserLogin();
-//    	userLogin.setUsername(userName);
-//    	userLogin.setPassword(passWord);
-//    	
-//    	userLoginService.login(userLogin);
-    	
         try {
-            Authentication request = new UsernamePasswordAuthenticationToken(userName, passWord);
-            Authentication result = authenticationManager.authenticate(request);
-            SecurityContextHolder.getContext().setAuthentication(result);
-            
+//            Authentication request = new UsernamePasswordAuthenticationToken(userName, passWord);
+//            Authentication result = authenticationManager.authenticate(request);
+//            SecurityContextHolder.getContext().setAuthentication(result);
+//            
+        	
+        	//entryService.findAll();
             Stage stage=(Stage) username.getScene().getWindow();
             ViewManager viewManager = new ViewManager();
-        	//viewManager.displayView(getClass().getResource("/view/user.fxml"), stage, context);
-            viewManager.displayView(getClass().getResource("/view/schedule1.fxml"), stage, context, 770, 550);
-            System.out.println("entry size: "+ entryService.findAll().size());
+            viewManager.displayView("schedule", stage, 770, 550);
+            //System.out.println("entry size: "+ entryService.findAll().size());
            
         } catch(AuthenticationException e) {
       	  text = "Authentication failed: " + e.getMessage() ;
@@ -117,5 +109,10 @@ public class LoginController {
     	
         actiontarget.setText(text);
     }
+    
+    
+    
+    
+    
 
 }

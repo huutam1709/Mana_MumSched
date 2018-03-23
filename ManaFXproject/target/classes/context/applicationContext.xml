@@ -26,8 +26,7 @@
       </property>
       <property name="jpaProperties">
          <props>
-            <!-- <prop key="hibernate.hbm2ddl.auto">create-drop</prop> -->
-            <prop key="hibernate.hbm2ddl.auto">validate</prop>
+            <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
             <prop key="hibernate.dialect">${hibernate.dialect}</prop>
             <prop  key="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor </prop>
              <prop key="hibernate.hbm2ddl.import_files">sql/data_credentials.sql,sql/data_authority.sql,sql/data_user.sql</prop>
@@ -51,8 +50,13 @@
       <property name="entityManagerFactory" ref="entityManagerFactory" />
    </bean>
    
+   <bean id = "EntryServiceImpl" class = "edu.mum.service.impl.EntryServiceImpl">
+   </bean>
+   
    <!-- Scan for  transaction-based resources -->
-   	<context:component-scan base-package="edu.mum" />
+   	<context:component-scan base-package="edu.mum.*" />
+   	
+   	<context:annotation-config />
   
     <tx:annotation-driven transaction-manager="transactionManager"  />
  

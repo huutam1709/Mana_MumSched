@@ -13,13 +13,21 @@ import javafx.stage.Stage;
 
 public class ViewManager {
 
-	public void displayView(URL fxml, Stage stage, 	ApplicationContext context, int width, int height) throws Exception  {
+	public void displayView(String fxml, Stage stage, int width, int height) throws Exception  {
+		Window mainStage = new Window(fxml, "Mana project", width, height );
+		stage.setScene(mainStage.getScene());
+	    stage.show();
+	}
 
+	public void displayView(URL fxml, Stage stage, 	ApplicationContext context) throws Exception  {
+	    /*
+	     * Spring  needs to create the controller so we can do Dependency Injection....
+	     */
  		SpringFXMLLoader loader = new SpringFXMLLoader(context);
 		Parent root = (Parent) loader.load(fxml);
  	   
-	   stage.setTitle("Mana project");
-	   stage.setScene(new Scene(root, width, height));
+	   stage.setTitle("FXML Welcome");
+	   stage.setScene(new Scene(root, 700, 700));
 	   
 	   stage.show();
 
