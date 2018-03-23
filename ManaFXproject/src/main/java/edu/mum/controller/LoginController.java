@@ -72,6 +72,7 @@ public class LoginController {
     @Autowired
     UserLoginService userLoginService;
 
+ 
     
     @FXML protected void handleSubmitButtonAction(ActionEvent event) {
     	
@@ -91,6 +92,8 @@ public class LoginController {
 //            Authentication result = authenticationManager.authenticate(request);
 //            SecurityContextHolder.getContext().setAuthentication(result);
 //            
+        	
+        	//entryService.findAll();
             Stage stage=(Stage) username.getScene().getWindow();
             ViewManager viewManager = new ViewManager();
             viewManager.displayView("schedule", stage, 770, 550);
@@ -109,5 +112,10 @@ public class LoginController {
     	
         actiontarget.setText(text);
     }
+    
+    
+    
+    
+    
 
 }

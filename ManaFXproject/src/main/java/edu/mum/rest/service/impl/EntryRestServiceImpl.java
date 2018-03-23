@@ -16,7 +16,6 @@ import edu.mum.domain.Entry;
 import edu.mum.rest.service.EntryRestService;
 
 @Service
-@Transactional 
 public class EntryRestServiceImpl implements EntryRestService {
 	@Autowired
 	RestHttpHeader restHttpHeader;
@@ -24,6 +23,7 @@ public class EntryRestServiceImpl implements EntryRestService {
 	public List<Entry> findAll() {
 		// TODO Auto-generated method stub
 		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
+		//List<Entry> aaa = Arrays.asList(restTemplate.exchange("http://localhost:8080/api/entries/", HttpMethod.GET, restHttpHeader.getHttpEntity(), Entry[].class).getBody());
 		return Arrays.asList(restTemplate.exchange("http://localhost:8080/api/entries/", HttpMethod.GET, restHttpHeader.getHttpEntity(), Entry[].class).getBody());
 		//return null;
 	}
