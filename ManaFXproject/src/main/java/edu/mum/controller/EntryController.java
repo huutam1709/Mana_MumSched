@@ -19,13 +19,13 @@ import org.springframework.stereotype.Component;
 import edu.mum.domain.BlockSimple;
 import edu.mum.domain.Entry;
 import edu.mum.domain.Schedule;
-import edu.mum.domain.UserLogin;
+//import edu.mum.domain.UserLogin;
 import edu.mum.enums.ScheduleStatusEnum;
 import edu.mum.main.ViewManager;
 import edu.mum.rest.service.EntryRestService;
 import edu.mum.service.EntryService;
 import edu.mum.service.ScheduleService;
-import edu.mum.service.UserLoginService;
+//import edu.mum.service.UserLoginService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -70,8 +70,8 @@ public class EntryController {
     @Autowired
 	EntryService entryService;
     
-    @Autowired
-    UserLoginService userLoginService;
+   // @Autowired
+    //UserLoginService userLoginService;
     
     @Autowired
     ScheduleService scheduleService;
@@ -115,7 +115,7 @@ public class EntryController {
 		entryDate.setCellValueFactory(new PropertyValueFactory<Entry, String>("entryDate"));
 
 		List<Entry> ls = entryService.findAll();
-		//tblEntries.getItems().setAll(ls);
+		tblEntries.getItems().setAll(ls);
 	}
 	
 	@FXML protected void ViewSchedules(ActionEvent event) {
