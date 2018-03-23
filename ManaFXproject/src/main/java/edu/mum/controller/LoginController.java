@@ -44,11 +44,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import edu.mum.domain.UserLogin;
 import edu.mum.main.ViewManager;
 import edu.mum.rest.service.EntryRestService;
 import edu.mum.service.EntryService;
-import edu.mum.service.UserLoginService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -66,11 +64,16 @@ public class LoginController {
     @FXML
     PasswordField password;
     
+<<<<<<< HEAD
     //@Autowired
 	//EntryService entryService;
     
     @Autowired
     UserLoginService userLoginService;
+=======
+    @Autowired
+	EntryService entryService;
+>>>>>>> parent of 5fdf923... update authentication
 
  
     
@@ -80,12 +83,6 @@ public class LoginController {
     	
     	String userName = username.getText();
     	String passWord = password.getText();
-    	
-//    	UserLogin userLogin = new UserLogin();
-//    	userLogin.setUsername(userName);
-//    	userLogin.setPassword(passWord);
-//    	
-//    	userLoginService.login(userLogin);
     	
         try {
 //            Authentication request = new UsernamePasswordAuthenticationToken(userName, passWord);
