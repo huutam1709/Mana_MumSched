@@ -75,18 +75,11 @@ public class LoginController {
     
     @Autowired
     UserLoginService userLoginService;
-
     
-    @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-
-    	
+    @FXML protected void handleSubmitButtonAction(ActionEvent event) {	
     	String text = "Authentication successful";
-    	
     	String userName = username.getText();
     	String passWord = password.getText();
-    	
-
-    	
         try {
             
             Stage stage=(Stage) username.getScene().getWindow();
